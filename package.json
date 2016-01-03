@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "mocha test",
+    "test": "mocha && mocha test --require blanket --reporter html-cov > coverage/index.html",
     "start": "node index.js"
   },
   "keywords": [],
@@ -15,8 +15,19 @@
     "express": "^4.13.3"
   },
   "devDependencies": {
+    "blanket": "^1.2.1",
+    "chai": "^3.4.1",
     "mocha": "^2.3.4",
     "should": "^8.0.2",
     "supertest": "^1.1.0"
+  },
+  "config": {
+    "blanket": {
+      "pattern": [
+        "lib/func.js",
+        "lib/func-null.js"
+      ],
+      "data-cover-never": "node_modules"
+    }
   }
 }
